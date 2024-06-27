@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "my-gitlab-chart.fullname" . }}
+  name: {{ include "gitlab-arm-chart.fullname" . }}
   labels:
-    app: {{ include "my-gitlab-chart.name" . }}
+    app: {{ include "gitlab-arm-chart.name" . }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "my-gitlab-chart.name" . }}
+      app: {{ include "gitlab-arm-chart.name" . }}
   template:
     metadata:
       labels:
-        app: {{ include "my-gitlab-chart.name" . }}
+        app: {{ include "gitlab-arm-chart.name" . }}
     spec:
       containers:
       - name: gitlab
