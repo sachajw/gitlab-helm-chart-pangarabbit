@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "helm-gitlab-arm64.fullname" . }}
+  name: {{ include "gitlab-arm64.fullname" . }}
 spec:
   selector:
-    app: {{ include "helm-gitlab-arm64.name" . }}
+    app: {{ include "gitlab-arm64.name" . }}
   ports:
   - protocol: TCP
     port: {{ .Values.service.port }}
