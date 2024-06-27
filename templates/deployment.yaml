@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "my-gitlab-chart.fullname" . }}
+  labels:
+    app: {{ include "my-gitlab-chart.name" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "my-gitlab-chart.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "my-gitlab-chart.name" . }}
+    spec:
+      containers:
+      - name: gitlab
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: {{ .Values.service.port }}
+        - containerPort: {{ .Values.service.httpsPort }}
+        - containerPort: {{ .Values.service.sshPort }}
+        resources:
+          limits:
+            cpu: {{ .Values.resources.limits.cpu }}
+            memory: {{ .Values.resources.limits.memory }}
+          requests:
+            cpu: {{ .Values.resources.requests.cpu }}
+            memory: {{ .Values.resources.requests.memory }}
+        env:
+        - name: GITLAB_OMNIBUS_CONFIG
+          value: |
+            external_url '{{ .Values.gitlab.externalUrl }}'
+            gitlab_rails['gitlab_shell_ssh_port'] = {{ .Values.gitlab.sshPort }}
