@@ -10,7 +10,8 @@ spec:
     targetRevision: HEAD
     path: "."
   destination:
-    server: "https://kubernetes.default.svc"
+    # server: "https://kubernetes.default.svc"
+    server: "https://192.168.0.48:16443"
     namespace: gitlab
   syncPolicy:
     automated:
