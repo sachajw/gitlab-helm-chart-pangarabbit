@@ -6,9 +6,9 @@ metadata:
 spec:
   project: pangarabbit
   source:
-    repoURL: "https://github.com/sachajw/helm-gitlab-arm64"
+    repoURL: "https://github.com/sachajw/helm-gitlab-arm64/chart/"
     targetRevision: HEAD
-    path: ""
+    path: "chart"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: gitlab
