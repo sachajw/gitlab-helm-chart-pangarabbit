@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: "https://github.com/sachajw/helm-gitlab-arm64"
     targetRevision: HEAD
-    path: "gitlab-arm-chart"
+    path: "helm-gitlab-arm64"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: gitlab
