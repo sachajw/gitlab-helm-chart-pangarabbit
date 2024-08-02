@@ -2,14 +2,14 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "gitlab-arm64.fullname" . }}
+  name: {{ include "gitlab-arm64-pangarabbit.fullname" . }}
   labels:
-    {{- include "gitlab-arm64.labels" . | nindent 4 }}
+    {{- include "gitlab-arm64-pangarabbit.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ include "gitlab-arm64.fullname" . }}
+    name: {{ include "gitlab-arm64-pangarabbit.fullname" . }}
   minReplicas: {{ .Values.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:
