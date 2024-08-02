@@ -1,3 +1,5 @@
+namespaceOverride: "" # Optionally specify a namespace here. If left blank, Helm's default namespace will be used.
+
 replicaCount: 1
 
 image:
@@ -7,13 +9,14 @@ image:
 
 service:
   type: ClusterIP
-  port: 80
+  port: 8080
 
 ingress:
   enabled: true
+  ingressClassName: "" # Optional: specify an ingressClassName if needed
   annotations: {}
   hosts:
-    - host: gitlab.pangarabbit.com
+    - host: gitlab.local
       paths:
         - /
   tls: []
@@ -23,10 +26,11 @@ ingress:
   #     hosts:
   #       - gitlab.local
 
-storageClass:
-  name:
-  provisioner: kubernetes.io/no-provisioner
-  volumeBindingMode: WaitForFirstConsumer
+persistence:
+  enabled: true
+  storageClass: ""
+  accessMode: ReadWriteOnce
+  size: 10Gi
 
 resources: {}
 # Example:
@@ -43,3 +47,24 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+daemonset:
+  enabled: true
+  image:
+    repository: zengxs/gitlab
+    tag: v17-ce
+    pullPolicy: IfNotPresent
+
+  resources: {}
+  # Example:
+  # resources:
+  #   limits:
+  #     cpu: 100m
+  #     memory: 128Mi
+  #   requests:
+  #     cpu: 100m
+  #     memory: 128Mi
+
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}

@@ -1,21 +1,18 @@
+{{- if .Values.persistence.enabled -}}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ printf "%s-%s" $robustName .name }}
-  namespace: {{ $.Release.Namespace }}
-  {{- if .pvcAnnotations }}
-  annotations:
-    {{- toYaml .pvcAnnotations | nindent 4 }}
+  name: {{ include "gitlab-arm64-pangarabbit.fullname" . }}-pvc
+  {{- if .Values.namespaceOverride }}
+  namespace: {{ .Values.namespaceOverride }}
   {{- end }}
 spec:
   accessModes:
-    - {{ .accessMode | default "ReadWriteOnce" }}
-  {{- if .storageClass }}
-  storageClassName: {{ .storageClass }}
-  {{- end }}
+    - {{ .Values.persistence.accessMode }}
   resources:
     requests:
-      storage: {{ .size | default "1Gi" }}
+      storage: {{ .Values.persistence.size }}
+  {{- if .Values.persistence.storageClass }}
+  storageClassName: "{{ .Values.persistence.storageClass }}"
+  {{- end }}
 {{- end }}
-{{- end }}
-{{- end -}}

@@ -2,6 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "gitlab-arm64-pangarabbit.fullname" . }}
+  {{- if .Values.namespaceOverride }}
+  namespace: {{ .Values.namespaceOverride }}
+  {{- end }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
@@ -18,12 +21,16 @@ spec:
           ports:
             - containerPort: 80
           volumeMounts:
+            {{- if .Values.persistence.enabled }}
             - name: gitlab-storage
               mountPath: /var/opt/gitlab
+            {{- end }}
       volumes:
+        {{- if .Values.persistence.enabled }}
         - name: gitlab-storage
           persistentVolumeClaim:
-            claimName: gitlab-pvc
+            claimName: {{ include "gitlab-arm64-pangarabbit.fullname" . }}-pvc
+        {{- end }}
       nodeSelector:
         kubernetes.io/arch: arm64
       resources:
