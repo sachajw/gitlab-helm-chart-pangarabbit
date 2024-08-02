@@ -1,9 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "gitlab-arm64-pangarabbit.fullname" . }}
+  name: {{ include "gitlab-arm-chart.fullname" . }}
+  namespace: {{ .Values.namespace }}
   labels:
-    {{- include "gitlab-arm64-pangarabbit.labels" . | nindent 4 }}
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    app.kubernetes.io/name: {{ include "gitlab-arm-chart.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -12,4 +16,5 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "gitlab-arm64-pangarabbit.selectorLabels" . | nindent 4 }}
+    app.kubernetes.io/name: {{ include "gitlab-arm-chart.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
