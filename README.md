@@ -21,14 +21,6 @@ $ helm install gitlab-arm64 gitlab-arm64/gitlab-arm64-pangarabbit
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
-| daemonset.affinity | object | `{}` |  |
-| daemonset.enabled | bool | `true` |  |
-| daemonset.image.pullPolicy | string | `"IfNotPresent"` |  |
-| daemonset.image.repository | string | `"zengxs/gitlab"` |  |
-| daemonset.image.tag | string | `"v17-ce"` |  |
-| daemonset.nodeSelector | object | `{}` |  |
-| daemonset.resources | object | `{}` |  |
-| daemonset.tolerations | list | `[]` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"zengxs/gitlab"` |  |
 | image.tag | string | `"v17-ce"` |  |
