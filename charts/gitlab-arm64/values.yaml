@@ -47,24 +47,3 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-
-daemonset:
-  enabled: true
-  image:
-    repository: zengxs/gitlab
-    tag: v17-ce
-    pullPolicy: IfNotPresent
-
-  resources: {}
-  # Example:
-  # resources:
-  #   limits:
-  #     cpu: 100m
-  #     memory: 128Mi
-  #   requests:
-  #     cpu: 100m
-  #     memory: 128Mi
-
-  nodeSelector: {}
-  tolerations: []
-  affinity: {}
