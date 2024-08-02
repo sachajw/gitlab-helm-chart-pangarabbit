@@ -13,3 +13,9 @@ ingress:
   host: gitlab.pangarabbit.com
 
 namespace: infrastructure
+
+persistence:
+  enabled: true
+  storageClass: ""
+  accessMode: ReadWriteOnce
+  size: 10Gi
