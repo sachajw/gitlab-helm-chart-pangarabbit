@@ -1,49 +1,15 @@
-namespaceOverride: "" # Optionally specify a namespace here. If left blank, Helm's default namespace will be used.
-
 replicaCount: 1
-
 image:
   repository: zengxs/gitlab
-  tag: v17-ce
+  tag: "17-ce"
   pullPolicy: IfNotPresent
 
 service:
   type: ClusterIP
-  port: 8080
+  port: 80
 
 ingress:
   enabled: true
-  ingressClassName: "" # Optional: specify an ingressClassName if needed
-  annotations: {}
-  hosts:
-    - host: gitlab.local
-      paths:
-        - /
-  tls: []
-  # Example:
-  # tls:
-  #   - secretName: gitlab-tls
-  #     hosts:
-  #       - gitlab.local
+  host: gitlab.pangarabbit.com
 
-persistence:
-  enabled: true
-  storageClass: ""
-  accessMode: ReadWriteOnce
-  size: 10Gi
-
-resources: {}
-# Example:
-# resources:
-#   limits:
-#     cpu: 100m
-#     memory: 128Mi
-#   requests:
-#     cpu: 100m
-#     memory: 128Mi
-
-nodeSelector: {}
-
-tolerations: []
-
-affinity: {}
+namespace: infrastructure

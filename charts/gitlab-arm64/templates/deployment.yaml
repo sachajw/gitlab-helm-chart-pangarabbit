@@ -1,37 +1,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "gitlab-arm64-pangarabbit.fullname" . }}
-  {{- if .Values.namespaceOverride }}
-  namespace: {{ .Values.namespaceOverride }}
-  {{- end }}
+  name: {{ include "gitlab-arm-chart.fullname" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    app.kubernetes.io/name: {{ include "gitlab-arm-chart.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+  annotations:
+    kubectl.kubernetes.io/default-container: {{ include "gitlab-arm-chart.fullname" . }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "gitlab-arm64-pangarabbit.name" . }}
+      app.kubernetes.io/name: {{ include "gitlab-arm-chart.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
+      annotations:
+        checksum/config: {{ include "gitlab-arm-chart.checksum" . }}
       labels:
-        app: {{ include "gitlab-arm64-pangarabbit.name" . }}
+        app.kubernetes.io/name: {{ include "gitlab-arm-chart.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
+      securityContext:
+        fsGroup: 999
       containers:
-        - name: gitlab
+        - name: {{ include "gitlab-arm-chart.fullname" . }}
+          securityContext: {}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - containerPort: 80
-          volumeMounts:
-            {{- if .Values.persistence.enabled }}
-            - name: gitlab-storage
-              mountPath: /var/opt/gitlab
-            {{- end }}
-      volumes:
-        {{- if .Values.persistence.enabled }}
-        - name: gitlab-storage
-          persistentVolumeClaim:
-            claimName: {{ include "gitlab-arm64-pangarabbit.fullname" . }}-pvc
-        {{- end }}
-      nodeSelector:
-        kubernetes.io/arch: arm64
-      resources:
-{{- toYaml .Values.resources | nindent 12 }}
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
