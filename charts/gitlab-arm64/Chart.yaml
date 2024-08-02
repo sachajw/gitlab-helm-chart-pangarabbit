@@ -4,3 +4,7 @@ description: A Helm Chart for Gitlab ARM64
 type: application
 version: 0.1.2
 appVersion: "17.0"
+maintainers:
+  - name: sachajw
+    url: https://github.com/sachajw
+    email: sacha@pangarabbit.com
