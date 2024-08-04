@@ -16,6 +16,6 @@ namespace: infrastructure
 
 persistence:
   enabled: false
-  storageClass: ""
+  #storageClass: "-"
   accessMode: ReadWriteOnce
   size: 10Gi
