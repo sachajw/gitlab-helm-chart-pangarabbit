@@ -56,7 +56,7 @@
               cosign sign -y $(cat .digest | awk -F "[, ]+" '/Pushed/{print $NF}')
             done
 
-    generate-docs:
+    generate-docs-gh-pages:
       needs: helm-release
       permissions:
         contents: write
@@ -83,7 +83,7 @@
             helm-docs --dry-run > README.md
         - name: Commit and push README.md
           run: |
-            git checkout -B main # Switch to the main branch
+            git checkout -B gh-pages # Switch to the gh-pages branch
             git add README.md
             git commit -m "Update README.md"
             git push origin main
