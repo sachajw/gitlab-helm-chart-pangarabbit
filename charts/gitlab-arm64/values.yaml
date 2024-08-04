@@ -1,11 +1,11 @@
 image:
-  repository: nginx
-  tag: "latest"
+  repository: zengxs/gitlab
+  tag: "17.0"
   pullPolicy: IfNotPresent
 
 ingress:
   host: chart-example.local
-  ingressClassName: nginx
+  ingressClassName: traefik
   tlsEnabled: true
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-staging
