@@ -87,5 +87,6 @@
             git add README.md
             git commit -m "Update README.md"
             git push origin main
+            git push origin main:gh-pages
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
