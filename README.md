@@ -2,7 +2,7 @@
 
 A Helm Chart for Gitlab ARM64
 
-![Version: 0.1.4](https://img.shields.io/badge/Version-0.1.4-informational?style=flat-square)
+![Version: 0.1.5](https://img.shields.io/badge/Version-0.1.5-informational?style=flat-square)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 ![AppVersion: 17.0](https://img.shields.io/badge/AppVersion-17.0-informational?style=flat-square)
 
@@ -33,7 +33,7 @@ $ helm install gitlab-arm64 gitlab-arm64/gitlab-arm64-pangarabbit
 | ingress.host | string | `"gitlab.pangarabbit.com"` |  |
 | namespace | string | `"infrastructure"` |  |
 | persistence.accessMode | string | `"ReadWriteOnce"` |  |
-| persistence.enabled | bool | `true` |  |
+| persistence.enabled | bool | `false` |  |
 | persistence.size | string | `"10Gi"` |  |
 | persistence.storageClass | string | `""` |  |
 | replicaCount | int | `1` |  |
