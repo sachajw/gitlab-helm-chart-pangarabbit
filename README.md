@@ -2,7 +2,7 @@
 
 A Helm Chart for Gitlab ARM64
 
-![Version: 0.1.8](https://img.shields.io/badge/Version-0.1.8-informational?style=flat-square)
+![Version: 0.1.9](https://img.shields.io/badge/Version-0.1.9-informational?style=flat-square)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 ![AppVersion: 17.0](https://img.shields.io/badge/AppVersion-17.0-informational?style=flat-square)
 
@@ -30,11 +30,11 @@ $ helm install gitlab-arm64 gitlab-arm64/gitlab-arm64-pangarabbit
 | containerPort | int | `80` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"nginx"` |  |
-| image.tag | string | `"latest"` |  |
+| image.repository | string | `"zengxs/gitlab"` |  |
+| image.tag | string | `"17.0"` |  |
 | ingress.annotations."cert-manager.io/cluster-issuer" | string | `"letsencrypt-staging"` |  |
 | ingress.host | string | `"chart-example.local"` |  |
-| ingress.ingressClassName | string | `"nginx"` |  |
+| ingress.ingressClassName | string | `"traefik"` |  |
 | ingress.nginxBasicAuth.password | string | `"secret"` |  |
 | ingress.nginxBasicAuth.user | string | `"admin"` |  |
 | ingress.tlsEnabled | bool | `true` |  |
