@@ -87,6 +87,6 @@
             git add README.md artifacthub-repo.yml
             git commit -m "Update README.md & artifacthub-repo.yml"
             git push origin main
-            git push origin main:gh-pages
+            git push origin main:gh-pages --force
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
