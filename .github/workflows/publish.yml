@@ -56,6 +56,7 @@
               cosign sign -y $(cat .digest | awk -F "[, ]+" '/Pushed/{print $NF}')
             done
 
+    # main branch
     generate-docs:
       needs: helm-release
       permissions:
@@ -84,6 +85,41 @@
         - name: Commit and push README.md
           run: |
             git checkout -B main # Switch to the main branch
+            git add README.md
+            git commit -m "Update README.md"
+            git push origin main
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    # gh-pages branch
+    generate-docs:
+      needs: helm-release
+      permissions:
+        contents: write
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+          with:
+            fetch-depth: 0
+        - name: Configure Git
+          run: |
+            git config user.name "helm-bot"
+            git config user.email "helm-bot@users.noreply.github.com"
+        - name: Install Helm
+          uses: azure/setup-helm@v3
+        - name: install helm-docs
+          run: |
+            cd /tmp
+            wget https://github.com/norwoodj/helm-docs/releases/download/v${{env.HELM_DOCS_VERSION}}/helm-docs_${{env.HELM_DOCS_VERSION}}_Linux_x86_64.tar.gz
+            tar -xvf helm-docs_${{env.HELM_DOCS_VERSION}}_Linux_x86_64.tar.gz
+            sudo mv helm-docs /usr/local/sbin
+        - name: run helm-docs
+          run: |
+            helm-docs --dry-run > README.md
+        - name: Commit and push README.md
+          run: |
+            git checkout -B gh-pages # Switch to the gh-pages branch
             git add README.md
             git commit -m "Update README.md"
             git push origin main
