@@ -92,7 +92,7 @@
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     # gh-pages branch
-    generate-docs:
+    generate-docs-gh-pages:
       needs: helm-release
       permissions:
         contents: write
