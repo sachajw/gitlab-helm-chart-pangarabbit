@@ -6,6 +6,8 @@ A Helm Chart for Gitlab ARM64
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 ![AppVersion: 17.0](https://img.shields.io/badge/AppVersion-17.0-informational?style=flat-square)
 
+<div class="artifacthub-widget" data-url="https://artifacthub.io/packages/helm/gitlab-arm64-pangarabbit/gitlab-arm64-pangarabbit" data-theme="dark" data-header="true" data-stars="true" data-responsive="true"><blockquote><p lang="en" dir="ltr"><b>gitlab-arm64-pangarabbit</b>: A Helm Chart for Gitlab ARM64</p>&mdash; Open in <a href="https://artifacthub.io/packages/helm/gitlab-arm64-pangarabbit/gitlab-arm64-pangarabbit">Artifact Hub</a></blockquote></div><script async src="https://artifacthub.io/artifacthub-widget.js"></script>
+
 ## Maintainers
 
 | Name | Email | Url |
