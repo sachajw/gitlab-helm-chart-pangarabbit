@@ -15,7 +15,7 @@ ingress:
 namespace: infrastructure
 
 persistence:
-  enabled: true
+  enabled: false
   storageClass: ""
   accessMode: ReadWriteOnce
   size: 10Gi
