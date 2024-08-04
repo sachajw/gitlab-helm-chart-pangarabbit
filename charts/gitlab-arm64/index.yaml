@@ -3,7 +3,21 @@ entries:
   gitlab-arm64-pangarabbit:
   - apiVersion: v2
     appVersion: "17.0"
-    created: "2024-08-04T16:38:08.01771+02:00"
+    created: "2024-08-04T18:32:25.328829+02:00"
+    description: A Helm Chart for Gitlab ARM64
+    digest: 6b020b6f3065971bd5f42923597d49d5e1827ede6c5278de85ca394be60834fe
+    maintainers:
+    - email: sacha@pangarabbit.com
+      name: sachajw
+      url: https://github.com/sachajw
+    name: gitlab-arm64-pangarabbit
+    type: application
+    urls:
+    - https://github.com/sachajw/gitlab-helm-chart-pangarabbit/charts/gitlab-arm64-pangarabbit-0.1.6.tgz
+    version: 0.1.6
+  - apiVersion: v2
+    appVersion: "17.0"
+    created: "2024-08-04T18:32:25.32843+02:00"
     description: A Helm Chart for Gitlab ARM64
     digest: 966755a4e45d2ccb60e2e8ef30bba2405eceabe26e0862f911d19fbed5a2259a
     maintainers:
@@ -13,54 +27,6 @@ entries:
     name: gitlab-arm64-pangarabbit
     type: application
     urls:
-    - https://github.com/sachajw/gitlab-helm-chart-pangarabbit/charts/gitlab-arm64/gitlab-arm64-pangarabbit-0.1.5.tgz
+    - https://github.com/sachajw/gitlab-helm-chart-pangarabbit/charts/gitlab-arm64-pangarabbit-0.1.5.tgz
     version: 0.1.5
-  - apiVersion: v2
-    appVersion: "17.0"
-    created: "2024-08-02T19:39:48.243868482Z"
-    description: A Helm Chart for Gitlab ARM64
-    digest: f7f8a846856d790581921f856591c07a8ef0d7945f9b47cb8bb2fe168ca42d73
-    maintainers:
-    - email: sacha@pangarabbit.com
-      name: sachajw
-      url: https://github.com/sachajw
-    name: gitlab-arm64-pangarabbit
-    type: application
-    urls:
-    - https://github.com/sachajw/gitlab-helm-chart-pangarabbit/releases/download/0.1.4-helm/gitlab-arm64-pangarabbit-0.1.4.tgz
-    version: 0.1.4
-  - apiVersion: v2
-    appVersion: "17.0"
-    created: "2024-08-02T18:36:03.9643814Z"
-    description: A Helm Chart for Gitlab ARM64
-    digest: cc48e7b143a849e2a869822568b3a63bf545a5422a322e352255df9c501887ff
-    maintainers:
-    - email: sacha@pangarabbit.com
-      name: sachajw
-      url: https://github.com/sachajw
-    name: gitlab-arm64-pangarabbit
-    type: application
-    urls:
-    - https://github.com/sachajw/gitlab-helm-chart-pangarabbit/releases/download/0.1.3-helm/gitlab-arm64-pangarabbit-0.1.3.tgz
-    version: 0.1.3
-  - apiVersion: v2
-    appVersion: "17.0"
-    created: "2024-08-02T16:45:14.058304249Z"
-    description: A Helm Chart for Gitlab ARM64
-    digest: 3bbb64f3192ab8d0c823b3971f3ef6c468536789e3758fed36d9973cca87bfaf
-    name: gitlab-arm64-pangarabbit
-    type: application
-    urls:
-    - https://github.com/sachajw/gitlab-helm-chart-pangarabbit/releases/download/0.1.2-helm/gitlab-arm64-pangarabbit-0.1.2.tgz
-    version: 0.1.2
-  - apiVersion: v2
-    appVersion: 1.16.0
-    created: "2024-08-02T14:55:38.414185723Z"
-    description: A Helm Chart for Gitlab ARM64
-    digest: b1013f4a26c6560b95081f5a64117f5b09e11f21e5df5368e7f518e4c1d2d117
-    name: gitlab-arm64-pangarabbit
-    type: application
-    urls:
-    - https://github.com/sachajw/gitlab-helm-chart-pangarabbit/releases/download/0.1.1-helm/gitlab-arm64-pangarabbit-0.1.1.tgz
-    version: 0.1.1
-generated: "2024-08-04T16:38:08.017075+02:00"
+generated: "2024-08-04T18:32:25.327879+02:00"
