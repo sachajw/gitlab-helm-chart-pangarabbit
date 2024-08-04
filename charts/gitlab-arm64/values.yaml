@@ -16,6 +16,7 @@ namespace: infrastructure
 
 persistence:
   enabled: false
-  #storageClass: "-"
-  accessMode: ReadWriteOnce
+  storageClass:
+    name: "nfs-csi-default"
   size: 10Gi
+  accessMode: ReadWriteMany
