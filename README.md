@@ -2,11 +2,7 @@
 
 A Helm Chart for Gitlab ARM64
 
-<<<<<<< HEAD
 ![Version: 0.1.5](https://img.shields.io/badge/Version-0.1.5-informational?style=flat-square)
-=======
-![Version: 0.1.4](https://img.shields.io/badge/Version-0.1.4-informational?style=flat-square)
->>>>>>> ce7dacec886a93b1aececf2a04f12f399b5bd02a
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 ![AppVersion: 17.0](https://img.shields.io/badge/AppVersion-17.0-informational?style=flat-square)
 [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/gitlab-arm64)](https://artifacthub.io/packages/search?repo=gitlab-arm64)
