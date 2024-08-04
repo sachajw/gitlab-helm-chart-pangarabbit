@@ -2,11 +2,7 @@ apiVersion: v2
 name: gitlab-arm64-pangarabbit
 description: A Helm Chart for Gitlab ARM64
 type: application
-<<<<<<< HEAD
 version: 0.1.5
-=======
-version: 0.1.4
->>>>>>> ce7dacec886a93b1aececf2a04f12f399b5bd02a
 appVersion: "17.0"
 maintainers:
   - name: sachajw
