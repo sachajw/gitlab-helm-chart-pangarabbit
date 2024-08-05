@@ -81,12 +81,16 @@
         - name: run helm-docs
           run: |
             helm-docs --dry-run > README.md
-        - name: Commit and push README.md
+        - name: Commit and push README.md and index.yaml for ArtifactHub
           run: |
             git checkout -B main # Switch to the main branch
             git add README.md
-            git commit -m "Update README.md"
+            git commit -m "Update index.yaml"
             git push origin main
             git push origin main:gh-pages --force
+            git checkout -B gh-pages # Switch to the gh-pages branch
+            git add index.yaml
+            git commit -m "Update index.yaml for ArtifactHub"
+            git push origin gh-pages:main --force
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
