@@ -85,9 +85,9 @@
           run: |
             git checkout -B main
             cp  README.md charts/gitlab-arm64/README.md
-            cp charts/gitlab-arm64/index.yaml .
-            git add .
-            git commit -m "Update README.md & index.yaml"
+            # cp charts/gitlab-arm64/index.yaml .
+            git README.md
+            git commit -m "Update README.md"
             git push origin main
             git push origin main:gh-pages --force
           env:
