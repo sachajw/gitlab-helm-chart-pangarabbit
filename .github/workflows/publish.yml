@@ -84,8 +84,6 @@
         - name: Commit and push README.md
           run: |
             git checkout -B main # Switch to the main branch
-            cp  README.md charts/gitlab-arm64/README.md
-            # cp charts/gitlab-arm64/index.yaml .
             git add README.md
             git commit -m "Update README.md"
             git push origin main
