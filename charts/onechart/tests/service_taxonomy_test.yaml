@@ -1,0 +1,35 @@
+suite: test service
+templates:
+  - service.yaml
+tests:
+  - it: Should set Gimlet taxonomy
+    set:
+      gitRepository: laszlocph/demo-app
+      gitSha: xyz
+      serviceName: cart-backend
+      serviceDescription: "Backend to manage shopping cart state, written in Go"
+      ownerName: "backend-team"
+      ownerIm: "#backend-team"
+      documentation: https://confluence.mycompany.com/cart-backend
+      logs: https://grafana.mycompany.com/logs
+      metrics: https://grafana.mycompany.com/cart-dashboard
+      issues: https://jira.mycompany.com/cart-backend
+      traces: https://jaeger.mycompany.com/cart-dashboard
+    asserts:
+      - equal:
+          path: metadata.annotations
+          value:
+            gimlet.io/git-repository: laszlocph/demo-app
+            gimlet.io/git-sha: xyz
+            v1alpha1.opensca.dev/vcs.owner: laszlocph
+            v1alpha1.opensca.dev/vcs.name: demo-app
+            v1alpha1.opensca.dev/version.sha: xyz
+            v1alpha1.opensca.dev/name: cart-backend
+            v1alpha1.opensca.dev/description: "Backend to manage shopping cart state, written in Go"
+            v1alpha1.opensca.dev/owner.name: "backend-team"
+            v1alpha1.opensca.dev/owner.im: "#backend-team"
+            v1alpha1.opensca.dev/documentation: https://confluence.mycompany.com/cart-backend
+            v1alpha1.opensca.dev/logs: https://grafana.mycompany.com/logs
+            v1alpha1.opensca.dev/metrics: https://grafana.mycompany.com/cart-dashboard
+            v1alpha1.opensca.dev/issues: https://jira.mycompany.com/cart-backend
+            v1alpha1.opensca.dev/traces: https://jaeger.mycompany.com/cart-dashboard

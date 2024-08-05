@@ -1,0 +1,29 @@
+suite: test deployment
+templates:
+  - deployment.yaml
+  - configmap.yaml
+tests:
+  - it: Should inject a sidecar if one is specified
+    set:
+      sidecar:
+        repository: debian
+        tag: stable-slim
+    asserts:
+      - template: deployment.yaml
+        documentIndex: 0
+        equal:
+          path: spec.template.spec.containers[1].image
+          value: debian:stable-slim
+  - it: Should inject a debug sidecar with shell and command specified
+    set:
+      sidecar:
+        repository: debian
+        tag: stable-slim
+        shell: "/bin/bash"
+        command: "while true; do sleep 30; done;"
+    asserts:
+      - template: deployment.yaml
+        documentIndex: 0
+        equal:
+          path: spec.template.spec.containers[1].image
+          value: debian:stable-slim

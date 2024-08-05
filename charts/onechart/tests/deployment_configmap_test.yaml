@@ -1,0 +1,44 @@
+suite: test deployment
+templates:
+  - deployment.yaml
+  - configmap.yaml
+tests:
+  - it: Should reference configmap if vars are set
+    set:
+      vars:
+        var1: value1
+        var2: value2
+    asserts:
+      - template: deployment.yaml
+        documentIndex: 0
+        contains:
+          path: spec.template.spec.containers[0].envFrom
+          content:
+            configMapRef:
+              name: release-name
+  - it: Should not reference configmap if vars are not set
+    asserts:
+      - template: deployment.yaml
+        documentIndex: 0
+        isNull:
+         path: spec.template.spec.containers[0].envFrom
+
+  - it: Should reference to existing configmaps
+    set:
+      existingConfigMaps:
+      - name: firstcm
+        optional: true
+      - name: secondcm
+        optional: true
+    asserts:
+      - template: deployment.yaml
+        documentIndex: 0
+        equal:
+          path: spec.template.spec.containers[0].envFrom
+          value:
+            - configMapRef:
+                name: firstcm
+                optional: true
+            - configMapRef:
+                name: secondcm
+                optional: true        

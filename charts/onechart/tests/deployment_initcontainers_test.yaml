@@ -1,0 +1,52 @@
+suite: test deployment
+templates:
+  - deployment.yaml
+  - configmap.yaml
+tests:
+  - it: Should set name, image and tag  
+    set:
+      initContainers:
+        - name: pod1
+          image: nginx
+          tag: 1.2.2
+    asserts:
+      - template: deployment.yaml
+        documentIndex: 0
+        equal:
+          path: spec.template.spec.initContainers[0].name
+          value: pod1
+      - template: deployment.yaml
+        documentIndex: 0
+        equal:
+          path: spec.template.spec.initContainers[0].image
+          value: "nginx:1.2.2"
+  - it: Should set command  
+    set:
+      initContainers:
+        - name: pod1
+          image: nginx
+          tag: 1.2.2
+          command: "while true; do date; sleep 2; done &&
+                      ls /data &&
+                      printf something"
+    asserts:
+      - template: deployment.yaml
+        documentIndex: 0
+        equal:
+          path: spec.template.spec.initContainers[0].command
+          value: ['/bin/sh', '-c', 'while true; do date; sleep 2; done && ls /data && printf something']
+
+  - it: Should set security context
+    set:
+      initContainers:
+        - name: pod1
+          image: nginx
+          tag: 1.2.2
+          securityContext:
+            runAsNonRoot: true
+    asserts:
+      - template: deployment.yaml
+        documentIndex: 0
+        equal:
+          path: spec.template.spec.initContainers[0].securityContext.runAsNonRoot
+          value: true

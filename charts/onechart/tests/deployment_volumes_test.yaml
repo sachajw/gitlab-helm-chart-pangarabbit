@@ -1,0 +1,281 @@
+suite: test deployment
+templates:
+  - deployment.yaml
+  - configmap.yaml
+  - pvc.yaml
+tests:
+  - it: Should mount volume
+    set:
+      volumes:
+        - name: data
+          path: /var/lib/1clickinfra/data
+          size: 10Gi
+          storageClass: default
+    asserts:
+      - template: deployment.yaml
+        documentIndex: 0
+        equal:
+          path: spec.template.spec.containers[0].volumeMounts
+          value:
+            - name: data
+              mountPath: /var/lib/1clickinfra/data
+  - it: Should reference volume
+    set:
+      volumes:
+        - name: data
+          path: /var/lib/1clickinfra/data
+          size: 10Gi
+          storageClass: default
+    asserts:
+      - template: deployment.yaml
+        documentIndex: 0
+        equal:
+          path: spec.template.spec.volumes
+          value:
+            - name: data
+              persistentVolumeClaim:
+                claimName: RELEASE-NAME-data
+  - it: Should recreate to avoid stuck deployments
+    set:
+      volumes:
+        - name: data
+          path: /var/lib/1clickinfra/data
+          size: 10Gi
+          storageClass: default
+    asserts:
+      - template: deployment.yaml
+        documentIndex: 0
+        equal:
+          path: spec.strategy.type
+          value: Recreate
+  - it: Should strategy take precedence
+    set:
+      volumes:
+        - name: data
+          path: /var/lib/1clickinfra/data
+          size: 10Gi
+          storageClass: default
+      strategy: RollingUpdate
+    asserts:
+      - template: deployment.yaml
+        documentIndex: 0
+        equal:
+          path: spec.strategy.type
+          value: RollingUpdate
+  - it: Should strategy be set
+    set:
+      strategy: Dummy
+    asserts:
+      - template: deployment.yaml
+        documentIndex: 0
+        equal:
+          path: spec.strategy.type
+          value: Dummy
+  - it: Should use the existing claim
+    set:
+      volumes:
+        - name: data
+          path: /var/lib/1clickinfra/data
+          existingClaim: my-static-claim
+    asserts:
+      - template: deployment.yaml
+        documentIndex: 0
+        equal:
+          path: spec.template.spec.volumes
+          value:
+            - name: data
+              persistentVolumeClaim:
+                claimName: my-static-claim
+  - it: Should use emptyDir
+    set:
+      volumes:
+        - name: data
+          path: /var/lib/1clickinfra/data
+          emptyDir: true
+    asserts:
+      - template: deployment.yaml
+        documentIndex: 0
+        equal:
+          path: spec.template.spec.volumes
+          value:
+            - name: data
+              emptyDir: {}
+  - it: Should use hostPath
+    set:
+      volumes:
+        - name: data
+          path: /var/lib/1clickinfra/data
+          hostPath:
+            path: /somewhere/over/the/rainbow
+            type: DirectoryOrCreate
+    asserts:
+      - template: deployment.yaml
+        documentIndex: 0
+        equal:
+          path: spec.template.spec.volumes
+          value:
+            - name: data
+              hostPath:
+                path: /somewhere/over/the/rainbow
+                type: DirectoryOrCreate
+  - it: Should use hostPath without type
+    set:
+      volumes:
+        - name: data
+          path: /var/lib/1clickinfra/data
+          hostPath:
+            path: /somewhere/over/the/rainbow
+    asserts:
+      - template: deployment.yaml
+        documentIndex: 0
+        equal:
+          path: spec.template.spec.volumes
+          value:
+            - name: data
+              hostPath:
+                path: /somewhere/over/the/rainbow
+  - it: Should use emptyDir
+    set:
+      volumes:
+        - name: myScratchDisk
+          path: /randomPath
+          emptyDir: true
+    asserts:
+      - template: deployment.yaml
+        documentIndex: 0
+        equal:
+          path: spec.template.spec.volumes
+          value:
+            - name: myScratchDisk
+              emptyDir: {}
+      - template: deployment.yaml
+        documentIndex: 0
+        equal:
+          path: spec.template.spec.containers[0].volumeMounts
+          value:
+            - name: myScratchDisk
+              mountPath: /randomPath
+  - it: Should use a configMap
+    set:
+      volumes:
+        - existingConfigMap: my-configmap
+          name: volume-name
+          path: /randomPath/app.conf
+          subPath: app.conf
+    asserts:
+      - template: deployment.yaml
+        documentIndex: 0
+        equal:
+          path: spec.template.spec.volumes
+          value:
+            - name: volume-name
+              configMap:
+                name: my-configmap
+  - it: Should use an existing secret as volume
+    set:
+      volumes:
+        - existingSecret: my-secret
+          name: volume-name
+          path: /randomPath/app.creds
+          subPath: app.creds
+    asserts:
+      - template: deployment.yaml
+        documentIndex: 0
+        equal:
+          path: spec.template.spec.volumes
+          value:
+            - name: volume-name
+              secret:
+                secretName: my-secret
+      - template: deployment.yaml
+        documentIndex: 0
+        equal:
+          path: spec.template.spec.containers[0].volumeMounts
+          value:
+            - name: volume-name
+              mountPath: /randomPath/app.creds
+              subPath: app.creds
+  - it: Should use a configmap with custom value
+    set:
+      volumes:
+        - name: volume-name
+          fileName: myfile.conf
+          fileContent: |
+              blablabla
+              bla
+          path: /randomPath/myfile.conf
+          subPath: myfile.conf
+    asserts:
+      - template: deployment.yaml
+        documentIndex: 0
+        equal:
+          path: spec.template.spec.volumes
+          value:
+            - name: volume-name
+              configMap:
+                name: release-name-volume-name
+      - template: deployment.yaml
+        documentIndex: 0
+        equal:
+          path: spec.template.spec.containers[0].volumeMounts
+          value:
+            - name: volume-name
+              mountPath: /randomPath/myfile.conf
+              subPath: myfile.conf
+  - it: Should mount a volume only for the init container
+    set:
+      initContainers:
+        - name : pod
+          image: debian
+          tag: v1.0.0
+      volumes:
+        - name: init-volume
+          path: /data
+          emptyDir: true
+    asserts:
+      - template: deployment.yaml
+        documentIndex: 0
+        equal:
+          path: spec.template.spec.volumes
+          value:
+          - name: init-volume
+            emptyDir: {} 
+      - template: deployment.yaml
+        documentIndex: 0
+        equal:
+          path: spec.template.spec.initContainers[0].volumeMounts
+          value:
+          - name: init-volume
+            mountPath: /data 
+      - template: deployment.yaml
+        documentIndex: 0
+        notEqual:
+          path: spec.template.spec.containers[0].volumeMounts
+          value:
+          - name: init-volume
+            emptyDir: {}
+  - it: Should mount a shared volume between the main container and the init container
+    set:
+      initContainers:
+        - name : pod
+          image: debian
+          tag: v1.0.0
+      volumes:
+        - name: shared-volume
+          path: /data
+          emptyDir: true
+    asserts:
+      - template: deployment.yaml
+        documentIndex: 0
+        equal:
+          path: spec.template.spec.initContainers[0].volumeMounts
+          value:
+          - name: shared-volume
+            mountPath: /data
+      - template: deployment.yaml
+        documentIndex: 0
+        equal:
+          path: spec.template.spec.containers[0].volumeMounts
+          value:
+          - name: shared-volume
+            mountPath: /data      
