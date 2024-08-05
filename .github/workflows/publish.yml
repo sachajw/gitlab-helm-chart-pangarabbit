@@ -84,7 +84,7 @@
         - name: Commit and push README.md
           run: |
             git checkout -B main
-            cp charts/gitlab-arm64/README.md .
+            cp  README.md charts/gitlab-arm64/README.md
             cp charts/gitlab-arm64/index.yaml .
             git add .
             git commit -m "Update README.md & index.yaml"
