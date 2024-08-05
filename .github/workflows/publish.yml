@@ -83,10 +83,10 @@
             helm-docs --dry-run > README.md
         - name: Commit and push README.md
           run: |
-            git checkout -B main
+            git checkout -B main # Switch to the main branch
             cp  README.md charts/gitlab-arm64/README.md
             # cp charts/gitlab-arm64/index.yaml .
-            git README.md
+            git add README.md
             git commit -m "Update README.md"
             git push origin main
             git push origin main:gh-pages --force
