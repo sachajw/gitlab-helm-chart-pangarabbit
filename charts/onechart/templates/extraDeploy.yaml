@@ -1,3 +1,0 @@
-{{- if .Values.extraDeploy }}
-{{ .Values.extraDeploy }}
-{{- end }}
