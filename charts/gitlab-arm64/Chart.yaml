@@ -2,9 +2,9 @@ apiVersion: v2
 name: gitlab-arm64-pangarabbit
 description: A Helm Chart for Gitlab ARM64
 type: application
-version: 0.1.9
+version: 0.1.10
 appVersion: "17.0"
 maintainers:
-  - name: sachajw
+  - name: Sacha Wharton
     url: https://github.com/sachajw
     email: sacha@pangarabbit.com
