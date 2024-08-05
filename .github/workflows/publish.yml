@@ -84,10 +84,10 @@
         - name: Commit and push README.md
           run: |
             git checkout -B main # Switch to the main branch
-            cp charts/gitlab-arm64/README.md .
+            # cp charts/gitlab-arm64/README.md .
             cp charts/gitlab-arm64/index.yaml .
             git add .
-            git commit -m "Update README.md &g artifacthub-repo.yml index.yaml"
+            git commit -m "Update README.md & index.yaml"
             git push origin main
             git push origin main:gh-pages --force
           env:
