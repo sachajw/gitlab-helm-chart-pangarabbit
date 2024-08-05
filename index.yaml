@@ -1,8 +1,4 @@
 apiVersion: v1
-<<<<<<< HEAD
-entries: {}
-generated: "2024-08-05T16:48:28.79283+02:00"
-=======
 entries:
   gitlab-arm64-pangarabbit:
   - apiVersion: v2
@@ -81,4 +77,3 @@ entries:
     - https://github.com/sachajw/gitlab-helm-chart-pangarabbit/charts/charts/onechart-0.6.0.tgz
     version: 0.6.0
 generated: "2024-08-05T15:54:09.824843+02:00"
->>>>>>> 5e25ee55509983f6ce3ea6e3b6ffabba16fd1b34
