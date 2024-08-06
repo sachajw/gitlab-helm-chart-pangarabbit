@@ -2,7 +2,7 @@
 
 A Helm Chart for Gitlab ARM64
 
-![Version: 0.1.22](https://img.shields.io/badge/Version-0.1.22-informational?style=flat-square)
+![Version: 0.1.23](https://img.shields.io/badge/Version-0.1.23-informational?style=flat-square)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 ![AppVersion: 17.0](https://img.shields.io/badge/AppVersion-17.0-informational?style=flat-square)
 
@@ -70,9 +70,9 @@ $ helm install gitlab-arm64-pangarabbit gitlab-arm64-pangarabbit/gitlab-arm64-pa
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
 | tolerations | list | `[]` |  |
-| vars | list | `[]` |  |
 | volumeMounts | list | `[]` |  |
 | volumes[0].name | string | `"gitlab"` |  |
+| volumes[0].path | string | `"/your path"` |  |
 | volumes[0].size | string | `"10Gi"` |  |
 | volumes[0].storageClass | string | `"nfs-csi-default"` |  |
 
