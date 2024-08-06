@@ -92,11 +92,10 @@ autoscaling:
   # targetMemoryUtilizationPercentage: 80
 
 # Additional volumes on the output Deployment definition.
-volumes: []
-# - name: foo
-#   secret:
-#     secretName: mysecret
-#     optional: false
+volumes:
+  - name: gitlab
+    size: 10Gi
+    storageClass: nfs-csi-default
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts: []
