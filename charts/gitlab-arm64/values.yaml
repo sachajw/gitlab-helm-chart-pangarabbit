@@ -13,7 +13,7 @@ image:
 secret:
   enabled: false
 
-vars: []
+#vars:
 #   VAR_1: "value 1"
 #   VAR_2: "value 2"
 
@@ -108,7 +108,7 @@ autoscaling:
 # Additional volumes on the output Deployment definition.
 volumes:
   - name: gitlab
-    #path: /your path
+    path: /your path
     size: 10Gi
     storageClass: nfs-csi-default
 
