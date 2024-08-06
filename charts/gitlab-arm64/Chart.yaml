@@ -2,7 +2,7 @@ apiVersion: v2
 name: gitlab-arm64-pangarabbit
 description: A Helm Chart for Gitlab ARM64
 type: application
-version: 0.1.21
+version: 0.1.22
 appVersion: "17.0"
 maintainers:
   - name: Sacha Wharton
@@ -10,5 +10,5 @@ maintainers:
     email: sacha@pangarabbit.com
 dependencies:
   - name: onechart
-    version: 0.6.0
+    version: 0.69.0
     repository: https://chart.onechart.dev
