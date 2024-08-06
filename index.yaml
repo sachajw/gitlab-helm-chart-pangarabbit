@@ -101,6 +101,6 @@ entries:
       name: onechart
       type: application
       urls:
-        - https://github.com/gimlet-io/onechart/releases/download/0.6.0/onechart-0.6.0.tgz
+        - https://github.com/gimlet-io/onechart/releases/download/0.69.0/onechart-0.69.0.tgz
       version: 0.69.0
 generated: "2024-08-06T09:03:27.094455+02:00"
