@@ -81,16 +81,12 @@
         - name: run helm-docs
           run: |
             helm-docs --dry-run > README.md
-        - name: Copy README.md
-          run: |
-            cp  README.md charts/gitlab-arm64/README.md
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         - name: Commit and push README.md
           run: |
             git checkout -B main # Switch to the main branch
             git add README.md
             git commit -m "Update README.md"
             git push origin main
+            cp README.md charts/gitlab-arm64/README.md
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
