@@ -87,6 +87,9 @@
             git add README.md
             git commit -m "Update README.md"
             git push origin main
-            cp README.md charts/gitlab-arm64/README.md
+            git checkout gh-pages # Switch to the gh-pages branch
+            git checkout main -- README.md
+            git commit -m "Update README.md from main branch"
+            git push origin gh-pages
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
