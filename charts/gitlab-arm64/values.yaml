@@ -10,9 +10,23 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "17.0"
 
-imagePullSecrets: []
+secret:
+  enabled: false
+
+vars: []
+#   VAR_1: "value 1"
+#   VAR_2: "value 2"
+
+imagePullSecrets:
+  []
+  # - name: regcred
 nameOverride: ""
 fullnameOverride: ""
+
+debugSidecarEnabled: false
+
+# command: |
+#   while true; do date; sleep 2; done
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -47,7 +61,7 @@ service:
 
 ingress:
   enabled: false
-  className: "traefik"
+  className: "traefik" # Can be replaced with your ingress controller
   annotations:
     {}
     # kubernetes.io/ingress.class: nginx
@@ -94,6 +108,7 @@ autoscaling:
 # Additional volumes on the output Deployment definition.
 volumes:
   - name: gitlab
+    #path: /your path
     size: 10Gi
     storageClass: nfs-csi-default
 
