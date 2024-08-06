@@ -3,7 +3,25 @@ entries:
   gitlab-arm64-pangarabbit:
   - apiVersion: v2
     appVersion: "17.0"
-    created: "2024-08-06T08:57:53.996969+02:00"
+    created: "2024-08-06T09:03:27.098384+02:00"
+    dependencies:
+    - name: onechart
+      repository: https://chart.onechart.dev
+      version: 0.6.0
+    description: A Helm Chart for Gitlab ARM64
+    digest: c696444094b38f89afccd3a242c48aac2d8305e35f832a2b1b6850694bf58435
+    maintainers:
+    - email: sacha@pangarabbit.com
+      name: Sacha Wharton
+      url: https://github.com/sachajw
+    name: gitlab-arm64-pangarabbit
+    type: application
+    urls:
+    - https://github.com/sachajw/gitlab-helm-chart-pangarabbit/charts/gitlab-arm64/docs/gitlab-arm64-pangarabbit-0.1.21.tgz
+    version: 0.1.21
+  - apiVersion: v2
+    appVersion: "17.0"
+    created: "2024-08-06T09:03:27.097875+02:00"
     dependencies:
     - name: onechart
       repository: https://chart.onechart.dev
@@ -21,7 +39,7 @@ entries:
     version: 0.1.20
   - apiVersion: v2
     appVersion: "17.0"
-    created: "2024-08-06T08:57:53.996387+02:00"
+    created: "2024-08-06T09:03:27.096304+02:00"
     dependencies:
     - name: onechart
       repository: https://chart.onechart.dev
@@ -39,7 +57,7 @@ entries:
     version: 0.1.19
   - apiVersion: v2
     appVersion: "17.0"
-    created: "2024-08-06T08:57:53.995885+02:00"
+    created: "2024-08-06T09:03:27.095747+02:00"
     dependencies:
     - name: onechart
       repository: https://chart.onechart.dev
@@ -57,7 +75,7 @@ entries:
     version: 0.1.18
   - apiVersion: v2
     appVersion: "17.0"
-    created: "2024-08-06T08:57:53.995359+02:00"
+    created: "2024-08-06T09:03:27.095193+02:00"
     dependencies:
     - name: onechart
       repository: https://chart.onechart.dev
@@ -84,4 +102,4 @@ entries:
     urls:
     - https://github.com/sachajw/gitlab-helm-chart-pangarabbit/charts/charts/onechart-0.6.0.tgz
     version: 0.6.0
-generated: "2024-08-06T08:57:53.994653+02:00"
+generated: "2024-08-06T09:03:27.094455+02:00"
