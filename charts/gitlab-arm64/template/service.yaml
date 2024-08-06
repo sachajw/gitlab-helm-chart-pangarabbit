@@ -17,6 +17,14 @@ spec:
       targetPort: http
       protocol: TCP
       name: http
+    - port: 443
+      targetPort: http
+      protocol: TCP
+      name: http
+    - port: 22
+      targetPort: http
+      protocol: TCP
+      name: http
   selector:
     app.kubernetes.io/name: onechart
     app.kubernetes.io/instance: gitlab-arm64-pangarabbit

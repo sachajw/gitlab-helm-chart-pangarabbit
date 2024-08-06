@@ -57,7 +57,18 @@ securityContext:
 
 service:
   type: ClusterIP
-  port: 80
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+      protocol: TCP
+    - name: https
+      port: 443
+      targetPort: 443
+      protocol: TCP
+    - name: ssh
+      port: 22
+      targetPort: 22
 
 ingress:
   enabled: false
@@ -89,14 +100,15 @@ resources:
   #   cpu: 100m
   #   memory: 128Mi
 
-livenessProbe:
-  httpGet:
-    path: /
-    port: http
-readinessProbe:
-  httpGet:
-    path: /
-    port: http
+probe:
+  enabled: false
+  path: "/"
+  settings:
+    initialDelaySeconds: 0
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 3
+    failureThreshold: 3
 
 autoscaling:
   enabled: false
