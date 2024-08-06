@@ -1,0 +1,14 @@
+---
+# Source: onechart/templates/pvc.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gitlab-arm64-pangarabbit-gitlab
+  namespace: infrastructure
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: nfs-csi-default
+  resources:
+    requests:
+      storage: 10Gi
