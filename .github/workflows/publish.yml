@@ -88,6 +88,7 @@
             git commit -m "Update README.md"
             git push origin main
         - name: Commit and push README.md to gh-pages branch
+          run: |
             git checkout gh-pages # Switch to the gh-pages branch
             git checkout main -- README.md
             git commit -m "Update README.md from main branch"
