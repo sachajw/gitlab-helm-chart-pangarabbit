@@ -7,7 +7,7 @@ entries:
       dependencies:
         - name: onechart
           repository: https://chart.onechart.dev
-          version: 0.6.0
+          version: 0.69.0
       description: A Helm Chart for Gitlab ARM64
       digest: c696444094b38f89afccd3a242c48aac2d8305e35f832a2b1b6850694bf58435
       maintainers:
@@ -25,7 +25,7 @@ entries:
       dependencies:
         - name: onechart
           repository: https://chart.onechart.dev
-          version: 0.6.0
+          version: 0.69.0
       description: A Helm Chart for Gitlab ARM64
       digest: 475341d0b9506cdd8c21207ad4d6ef1cf07160e2acecee59df41f1c3215ec8f1
       maintainers:
@@ -43,7 +43,7 @@ entries:
       dependencies:
         - name: onechart
           repository: https://chart.onechart.dev
-          version: 0.6.0
+          version: 0.69.0
       description: A Helm Chart for Gitlab ARM64
       digest: c1a00cce6a2acc62e0eecc5145507ad965e6d5ae699690f11960628ffbb55a76
       maintainers:
@@ -61,7 +61,7 @@ entries:
       dependencies:
         - name: onechart
           repository: https://chart.onechart.dev
-          version: 0.6.0
+          version: 0.69.0
       description: A Helm Chart for Gitlab ARM64
       digest: b797aba231855ed9d914efa398455a3cd49533875d59fbe2f2fd408760d0d354
       maintainers:
@@ -79,7 +79,7 @@ entries:
       dependencies:
         - name: onechart
           repository: https://chart.onechart.dev
-          version: 0.6.0
+          version: 0.69.0
       description: A Helm Chart for Gitlab ARM64
       digest: 692cea40d4d8a8e324cfada8e9f9bd8f7a0b71e9f6604bb3b00dc09f85a2a76e
       maintainers:
@@ -102,5 +102,5 @@ entries:
       type: application
       urls:
         - https://github.com/gimlet-io/onechart/releases/download/0.6.0/onechart-0.6.0.tgz
-      version: 0.6.0
+      version: 0.69.0
 generated: "2024-08-06T09:03:27.094455+02:00"
