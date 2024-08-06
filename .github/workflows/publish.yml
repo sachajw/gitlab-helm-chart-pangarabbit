@@ -81,12 +81,13 @@
         - name: run helm-docs
           run: |
             helm-docs --dry-run > README.md
-        - name: Commit and push README.md
+        - name: Commit and push README.md to main branch
           run: |
             git checkout -B main # Switch to the main branch
             git add README.md
             git commit -m "Update README.md"
             git push origin main
+        - name: Commit and push README.md to gh-pages branch
             git checkout gh-pages # Switch to the gh-pages branch
             git checkout main -- README.md
             git commit -m "Update README.md from main branch"
