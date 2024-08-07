@@ -5,7 +5,9 @@ remote: origin
 target-branch: main
 chart-dirs:
   - charts
-chart-repos: []
+chart-repos:
+  - onechart=https://chart.onechart.dev
+helm-extra-args: "--timeout 600s"
 validate-chart-schema: false
 validate-maintainers: true
 validate-yaml: true

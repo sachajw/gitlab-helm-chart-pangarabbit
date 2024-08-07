@@ -4,6 +4,8 @@
     push:
       branches:
         - main
+      paths:
+        - "charts/**"
 
   env:
     HELM_DOCS_VERSION: '1.14.2'
