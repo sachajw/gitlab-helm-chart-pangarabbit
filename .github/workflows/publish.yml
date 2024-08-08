@@ -83,7 +83,8 @@
             sudo mv helm-docs /usr/local/sbin
         - name: run helm-docs
           run: |
-            helm-docs --dry-run > README.md && helm-docs --dry-run > ./charts/gitlab-arm64/README.md
+            helm-docs --dry-run > README.md
+            helm-docs --dry-run > ./charts/gitlab-arm64/README.md
         - name: Commit and push README.md to main branch
           run: |
             git checkout -B main # Switch to the main branch
