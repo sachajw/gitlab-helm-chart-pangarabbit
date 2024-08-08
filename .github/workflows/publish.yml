@@ -9,6 +9,8 @@
 
   env:
     HELM_DOCS_VERSION: '1.14.2'
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   permissions: read-all
 
@@ -82,7 +84,7 @@
             sudo mv helm-docs /usr/local/sbin
         - name: run helm-docs
           run: |
-            helm-docs --dry-run > README.md && helm-docs --dry-run > charts/gitlab-arm64/README.md
+            helm-docs --dry-run > README.md && helm-docs --dry-run > ./charts/gitlab-arm64/README.md
         - name: Commit and push README.md to main branch
           run: |
             git checkout -B main # Switch to the main branch
